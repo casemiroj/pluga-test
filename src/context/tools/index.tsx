@@ -13,6 +13,12 @@ interface PropsToolContext {
   setTools: (tools: ITool[]) => void
   filteredTools: ITool[]
   setFilteredTools: (tools: ITool[]) => void
+  currentTools: ITool[]
+  setCurrentTools: (tools: ITool[]) => void
+}
+
+interface ToolContextProviderProps {
+  children: JSX.Element|JSX.Element[]
 }
 
 const defaultValue = {
@@ -35,15 +41,26 @@ const defaultValue = {
       link: ''
     }
   ],
-  setFilteredTools: (tools: ITool[]) => console.warn('no tool provider')
+  setFilteredTools: (tools: ITool[]) => console.warn('no tool provider'),
+  currentTools: [
+    {
+      app_id: '',
+      name: '',
+      color: '',
+      icon: '',
+      link: ''
+    }
+  ],
+  setCurrentTools: (tools: ITool[]) => console.warn('no tool provider')
 }
 
 
 export const ToolContext = createContext<PropsToolContext>(defaultValue);
 
-export function ToolContextProvider({ children }: any) {
+export function ToolContextProvider({ children }: ToolContextProviderProps) {
   const [tools, setTools] = useState<ITool[]>(defaultValue.tools)
   const [filteredTools, setFilteredTools] = useState<ITool[]>(defaultValue.tools)
+  const [currentTools, setCurrentTools] = useState<ITool[]>(defaultValue.tools)
   
   return (
     <ToolContext.Provider
@@ -51,7 +68,9 @@ export function ToolContextProvider({ children }: any) {
         tools,
         setTools,
         filteredTools,
-        setFilteredTools
+        setFilteredTools,
+        currentTools,
+        setCurrentTools
       }}
     >
       {children}

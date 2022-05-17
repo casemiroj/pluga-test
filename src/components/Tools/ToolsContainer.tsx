@@ -12,7 +12,7 @@ interface ITool {
 }
 
 export function ToolsContainer() {
-  const { filteredTools, setTools, setFilteredTools } = useContext(ToolContext)
+  const { currentTools, setTools, setFilteredTools } = useContext(ToolContext)
 
   useEffect(() => {
     const getTools = async() => {
@@ -26,7 +26,7 @@ export function ToolsContainer() {
 
   return (
     <main className="flex-1 flex flex-wrap justify-center gap-5 px-52">
-      {filteredTools.map((tool: ITool) => (
+      {currentTools.map((tool: ITool) => (
         <Tool
           key={tool.app_id}
           icon={tool.icon}
