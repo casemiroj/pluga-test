@@ -1,5 +1,17 @@
-export function App() {
+import { Pagination } from "./components/Pagination";
+import { SearchBar } from "./components/SearchBar";
+import { ToolsContainer } from "./components/Tools/ToolsContainer";
+import { ToolContextProvider } from "./context/tools";
+
+
+export function App() { 
   return (
-    <h1>Hello World</h1>
+    <ToolContextProvider>
+      <div className="h-screen flex flex-col">
+        <SearchBar />
+        <ToolsContainer />
+        <Pagination />
+      </div>
+    </ToolContextProvider>
   );
 }
