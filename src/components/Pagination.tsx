@@ -22,6 +22,7 @@ export function Pagination() {
       {Array.from(Array(pages), (page, index) => (
         <button 
           className="bg-slate-300 h-6 w-6 flex items-center justify-center rounded-md"
+          key={index}
           value={index}
           onClick={event => setCurrentPage(Number(event.currentTarget.value))}
         >

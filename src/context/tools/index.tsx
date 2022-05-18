@@ -61,7 +61,6 @@ export function ToolContextProvider({ children }: ToolContextProviderProps) {
   const [tools, setTools] = useState<ITool[]>(defaultValue.tools)
   const [filteredTools, setFilteredTools] = useState<ITool[]>(defaultValue.tools)
   const [currentTools, setCurrentTools] = useState<ITool[]>(defaultValue.tools)
-  
   return (
     <ToolContext.Provider
       value={{
